@@ -26,10 +26,31 @@
             <img src="{% static 'images/furina.png' %}" class="responsive-img" style="max-height: 150px" />
           </center>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <center>
             <h1>Blog lam tu Python Django</h1>
           </center>
+        </div>
+        <div class="col-sm-1">
+          {% if user.username %}
+            <p>Xin chao {{ user.username }}</p>
+            <p>
+              <a href="{% url 'logout' %}">Dang xuat</a>
+            </p>
+
+            {% comment %} <form id="logout-form" method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit">Dang xuat</button>
+              <input type="submit" value="Dang xuat" />
+            </form> {% endcomment %}
+          {% else %}
+            <p>
+              <a href="{% url 'register' %}">Dang ki</a>
+            </p>
+            <p>
+              <a href="{% url 'login' %}">Dang nhap</a>
+            </p>
+          {% endif %}
         </div>
       </div>
       <br />
