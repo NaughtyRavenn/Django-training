@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import post
 
-# Create your views here.
+
+def list(request):
+    data = {"posts": post.objects.all().order_by("-date")}
+    return render(request, "blog/blog.html", data)
