@@ -10,13 +10,20 @@
 
       {% endblock %}
     </title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        background-color: #f6f6f6;
+      }
+    </style>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: 95%;">
       <div class="row">
         <div class="col-sm-2">
           <center>
-            <img src="{% static 'images/furina.png' %}" class="responsive-img" style="max-height:150px" />
+            <img src="{% static 'images/furina.png' %}" class="responsive-img" style="max-height: 150px" />
           </center>
         </div>
         <div class="col-sm-10">
@@ -25,8 +32,38 @@
           </center>
         </div>
       </div>
-    </div>Noi dung{% block content %}
+      <br />
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="bs-sliderbar" style="background-color: #fff;">
+            <ul class="nav flex-column">
+              <li>
+                <a href="/">Thong tin ca nhan</a>
+              </li>
+              <li>
+                <a href="/blog">Bai viet</a>
+              </li>
+              <li>
+                <a href="/contact">Lien he</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <div class="container-fluid">
+            {% block content %}
 
-    {% endblock %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container-fluid">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Google+</a>
+      </div>
+    </footer>
   </body>
 </html>
