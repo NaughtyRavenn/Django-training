@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import post
+from django.http import Http404
 
 
 def list(request):
@@ -8,5 +9,8 @@ def list(request):
 
 
 def postContent(request, id):
-    postContent = post.objects.get(id=id)
+    try:
+        postContent = post.objects.get(id=id)
+    except post.DoesNotExist:
+        raise Http404("Bai viet khong ton tai")
     return render(request, "blog/post.html", {"post": postContent})

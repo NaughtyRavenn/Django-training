@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
   <h3>{{ post.title }}</h3>
-  <h3><a href="{% url 'post' post.id %}">{{ post.title }}</a></h3>
+  {% comment %} <h3><a href="{% url 'post' post.id %}">{{ post.title }}</a></h3> {% endcomment %}
   <h6>on {{ post.date }}</h6>
   {{ post.body|safe|linebreaks }}
 {% endblock %}
