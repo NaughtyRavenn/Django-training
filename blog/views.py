@@ -1,16 +1,17 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from .models import post
-from django.http import Http404
+
+# from django.http import Http404
+from django.views.generic import ListView, DetailView
 
 
-def list(request):
-    data = {"posts": post.objects.all().order_by("-date")}
-    return render(request, "blog/blog.html", data)
+class postListView(ListView):
+    queryset = post.objects.all().order_by("-date")
+    template_name = "blog/blog.html"
+    context_object_name = "posts"
+    paginate_by = 10
 
 
-def postContent(request, id):
-    try:
-        postContent = post.objects.get(id=id)
-    except post.DoesNotExist:
-        raise Http404("Bai viet khong ton tai")
-    return render(request, "blog/post.html", {"post": postContent})
+class postDetailView(DetailView):
+    model = post
+    template_name = "blog/post.html"
